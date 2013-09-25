@@ -1,0 +1,8 @@
+mail:
+  smtp_server: ''
+  imap_server: 'mail.server.com'
+  imap_port: '143'
+  username: 'username@server.com'
+  password: 'password'
+  bot_sign_container: 'SUBJECT'
+  bot_sign: 'What have you done today?'
