@@ -1,6 +1,6 @@
 require 'ostruct'
 require 'net/imap'
-require 'mail'
+require 'net/smtp'
 require 'yaml'
 require 'pry'
 
@@ -49,23 +49,32 @@ module Reporter
     end
 
     def get_status
-      File.read(settings.report_file).strip
+      content = File.read(settings.report_file).strip
+      content.empty? ? nil : content
     end
 
     def send_status(email, status)
       if email && status
         username = settings.mail.username
-        mail = Mail.new do
-          from    username
-          to      email
-          subject 'Re: What have you done today?'
-          body    status
+        begin
+          Net::SMTP.start(settings.mail.smtp_server, 25, settings.mail.smtp_server, settings.mail.username, settings.mail.password, :plain) do |smtp|
+            smtp.enable_starttls
+            smtp.send_message compose_message(status, email), username, [email]
+            smtp.finish
+          end
+          clear_status
+        rescue Exception => e
+          puts e
         end
-
-        mail.delivery_method :sendmail
-        mail.deliver!
-        clear_status
       end
+    end
+
+    def compose_message(message, email)
+      from = "From: <#{settings.mail.username}>"
+      to = "To: <#{email}>"
+      subject = "Subject: Re: #{settings.mail.bot_sign}"
+      date = "Date: #{DateTime.now}"
+      "#{from}\n#{to}\n#{subject}\n#{date}\n\n#{message}"
     end
 
     def clear_status
