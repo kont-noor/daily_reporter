@@ -41,7 +41,7 @@ module Reporter
       imap = Net::IMAP.new(settings.mail.imap_server, port: settings.mail.imap_port)
       imap.authenticate('LOGIN', settings.mail.username, settings.mail.password)
       imap.examine('Inbox')
-      id = imap.search([settings.mail.bot_sign_container, settings.mail.bot_sign, 'SINCE', Date.today.strftime('%-d-%b-%Y')]).last
+      id = imap.search([settings.mail.bot_sign_container, settings.mail.bot_sign, 'SINCE', Time.now.strftime('%-d-%b-%Y')]).last
       return nil unless id
       envelope = imap.fetch(id, 'ENVELOPE').first.attr['ENVELOPE']
       reply_to = envelope.reply_to.first
@@ -73,8 +73,7 @@ module Reporter
       from = "From: <#{settings.mail.username}>"
       to = "To: <#{email}>"
       subject = "Subject: Re: #{settings.mail.bot_sign}"
-      date = "Date: #{DateTime.now}"
-      "#{from}\n#{to}\n#{subject}\n#{date}\n\n#{message}"
+      "#{from}\n#{to}\n#{subject}\n\n#{message}"
     end
 
     def clear_status
