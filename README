@@ -1,4 +1,5 @@
 1. first copy settings.yml.sample to settings.yml and set your credentials
-2. ???
-3. run rake to get the result
-
+2. fill the file report.txt
+3. get the email to respond
+4. run rake to get the result
+5. report.txt will be cleaned
