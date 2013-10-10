@@ -13,6 +13,8 @@ when 'task'
   else
     puts 'wrong usage'
   end
+when 'bootstrap'
+  DailyReporter.bootstrap
 else
   puts 'wrong usage'
 end

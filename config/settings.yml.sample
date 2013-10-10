@@ -1,5 +1,5 @@
 mail:
-  smtp_server: ''
+  smtp_server: 'mail.server.com'
   imap_server: 'mail.server.com'
   imap_port: '143'
   username: 'username@server.com'

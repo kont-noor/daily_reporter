@@ -1,8 +1,11 @@
 module DailyReporter
   module Task
+    TASKS_FILE = DailyReporter::SETTINGS_DIRECTORY + '/tasks.txt'
     class << self
       def status
-        content = File.read(Settings.report_file).strip
+        content = File.open(TASKS_FILE, 'r+') do |f|
+          f.read.strip
+        end
         content.empty? ? nil : content
       end
 
