@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'daily-reporter'
+
+case ARGV[0]
+when 'report'
+  DailyReporter.report
+when 'task'
+  case ARGV[1]
+  when 'add'
+    DailyReporter.add_task ARGV[2]
+  when 'list'
+    DailyReporter.tasks_list
+  else
+    puts 'wrong usage'
+  end
+else
+  puts 'wrong usage'
+end

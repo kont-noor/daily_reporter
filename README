@@ -1,5 +1,12 @@
-1. first copy settings.yml.sample to settings.yml and set your credentials
-2. fill the file report.txt
-3. get the email to respond
-4. run rake to get the result
-5. report.txt will be cleaned
+1. install the gem by gem install daily-reporter
+2. copy settings.yml.sample to settings.yml and set your credentials
+3. add the task by daily-reporter task add 'task description'
+   you can look through the task lists by daily-reporter task list
+4. get the email to respond
+5. run daily-reporter report to send the report
+   tasks list will be cleaned
+
+TODO:
+1. add it to the cron
+2. set settings another way
+3. add an option that could make report by commits
