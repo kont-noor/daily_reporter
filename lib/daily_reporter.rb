@@ -19,6 +19,6 @@ module DailyReporter
   end
 end
 
-require 'daily-reporter/settings'
-require 'daily-reporter/task'
-require 'daily-reporter/mail'
+require 'daily_reporter/settings'
+require 'daily_reporter/task'
+require 'daily_reporter/mail'

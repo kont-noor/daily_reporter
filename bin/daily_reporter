@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'daily-reporter'
+require 'daily_reporter'
 
 case ARGV[0]
 when 'report'
