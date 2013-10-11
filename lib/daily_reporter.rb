@@ -1,5 +1,5 @@
 module DailyReporter
-  SETTINGS_DIRECTORY = File.expand_path('~/.daily-reporter')
+  SETTINGS_DIRECTORY = File.expand_path('~/.daily_reporter')
   class << self
     def report
       Mail.send_status

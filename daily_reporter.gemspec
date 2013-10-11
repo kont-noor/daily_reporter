@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'daily_reporter'
-  s.version     = '0.0.0'
-  s.executables << 'daily-reporter'
+  s.version     = '0.0.1'
+  s.executables << 'daily_reporter'
   s.date        = '2013-10-09'
   s.summary     = "A tool that reports about daily tasks"
   s.description = "A tool that reports about daily tasks"
@@ -13,4 +13,6 @@ Gem::Specification.new do |s|
   s.post_install_message = 'Read README before you start using daily reporter'
 
   s.add_development_dependency 'pry'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'fakefs'
 end

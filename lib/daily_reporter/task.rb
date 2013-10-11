@@ -4,7 +4,7 @@ module DailyReporter
     class << self
       def status
         content = File.open(TASKS_FILE, 'a+') do |f|
-          f.read.strip
+          f.read
         end
         content.empty? ? nil : content
       end
@@ -15,7 +15,7 @@ module DailyReporter
 
       def add(task)
         File.open(TASKS_FILE, 'a') do |f|
-          f.puts task
+          f.puts task.strip
         end
       end
     end
