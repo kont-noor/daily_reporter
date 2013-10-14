@@ -4,11 +4,11 @@ Gem::Specification.new do |s|
   s.executables << 'daily_reporter'
   s.date        = '2013-10-09'
   s.summary     = "A tool that reports about daily tasks"
-  s.description = "A tool that reports about daily tasks"
+  s.description = "A tool that allows to collect daily performed tasks and send them as an email respond"
   s.authors     = ["Nickolay Kondratenko"]
   s.email       = 'devmarkup@gmail.com'
   s.files       = ["config/settings.yml.sample", "lib/daily_reporter.rb", "lib/daily_reporter/mail.rb", "lib/daily_reporter/task.rb", "lib/daily_reporter/settings.rb", "bin/daily_reporter"]
-  s.homepage    = 'http://rubygems.org/gems/daily_reporter'
+  s.homepage    = 'http://github.com/kont-noor/daily_reporter'
   s.license     = 'MIT'
   s.post_install_message = 'Read README before you start using daily reporter'
 
