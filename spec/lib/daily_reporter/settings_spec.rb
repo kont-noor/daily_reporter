@@ -29,4 +29,8 @@ describe DailyReporter::Settings do
       DailyReporter::Settings.init
     end
   end
+
+  describe 'init' do
+    pending "should copy settings.yml.sample and ask user to fill in correct data"
+  end
 end
