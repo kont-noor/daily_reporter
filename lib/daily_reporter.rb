@@ -2,7 +2,7 @@ module DailyReporter
   SETTINGS_DIRECTORY = File.expand_path('~/.daily_reporter')
   class << self
     def report
-      Mail.send_status
+      MailReporter.report
     end
 
     def add_task(task)
@@ -21,4 +21,4 @@ end
 
 require 'daily_reporter/settings'
 require 'daily_reporter/task'
-require 'daily_reporter/mail'
+require 'daily_reporter/mail_reporter'

@@ -1,30 +1,22 @@
 require 'net/imap'
 require 'net/smtp'
 
-module DailyReporter
-  module Mail
-    class << self
-      def send_status
-        unless status = Task.status
-          puts 'empty status'
-          return
-        end
-        unless email = get_mail_address
-          puts 'email is absent'
-          return
-        end
+require 'daily_reporter/base_reporter'
 
+module DailyReporter
+  class MailReporter < BaseReporter
+    class << self
+      def send_status status, email
         username = Settings.mail.username
-        begin
-          Net::SMTP.start(Settings.mail.smtp_server, 25, Settings.mail.smtp_server, Settings.mail.username, Settings.mail.password, :plain) do |smtp|
-            smtp.enable_starttls
-            smtp.send_message compose_message(status, email), username, [email]
-            smtp.finish
-          end
-          Task.clear_status
-        rescue Exception => e
-          puts e
+        Net::SMTP.start(Settings.mail.smtp_server, 25, Settings.mail.smtp_server, Settings.mail.username, Settings.mail.password, :plain) do |smtp|
+          smtp.enable_starttls
+          smtp.send_message compose_message(status, email), username, [email]
+          smtp.finish
         end
+      end
+
+      def get_subscriber
+        get_mail_address
       end
 
       def get_mail_address
