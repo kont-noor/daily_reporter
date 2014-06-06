@@ -31,10 +31,13 @@ module DailyReporter
       end
 
       def compose_message(message, email)
-        from = "From: <#{Settings.mail.username}>"
-        to = "To: <#{email}>"
-        subject = "Subject: Re: #{Settings.mail.bot_sign}"
-        "#{from}\n#{to}\n#{subject}\n\n#{message}"
+        <<-MAIL
+        From: <#{Settings.mail.username}>
+        To: <#{email}>
+        Subject: Re: #{Settings.mail.bot_sign}
+
+        #{message}
+        MAIL
       end
     end
   end
